@@ -9,6 +9,8 @@ export interface Countries {
 }
 
 export interface News {
+    save?: string,
+    country: string,
     sourceName: string,
     author: string,
     title: string,
@@ -16,5 +18,7 @@ export interface News {
     url: string,
     imageUrl: string,
     datetime: Date,
-    content: string
+    content: string,
+    timestamp: Date
+
 }

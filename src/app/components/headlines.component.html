@@ -21,8 +21,11 @@
                     <span class="align-self-center">
                         <code style="color: grey">{{n.datetime}}</code>
                     </span>
+                    <span>
+                        <button type="button" class="btn btn-warning mr-1" (click)="saveArticle(n)">Save</button>
+                        <a class="btn btn-primary" href="{{n.url}}">Link</a>
+                    </span>
                     
-                    <a class="btn btn-primary" href="{{n.url}}">Link</a>
                 </div>
                
             </div>

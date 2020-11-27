@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { apiKey } from '../models';
 import { NewsDB } from '../news.database';
 
@@ -15,6 +16,7 @@ export class ApiComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private newsDB: NewsDB
     ) { }
 
@@ -36,6 +38,7 @@ export class ApiComponent implements OnInit {
     this.apiKeyAdded = true
     if (this.apiKeyAdded)
       console.log("API Key added to NewsDB.apiKey.")
+    this.router.navigate(['/countries'])
   }
 
   async deleteApi() {
