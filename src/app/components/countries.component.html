@@ -1,0 +1,11 @@
+<div class="row justify-content-between mt-3">
+    <h2>Countries</h2>
+    <button type="button" class="btn btn-info" [routerLink]="['/api']">Settings</button>
+</div>
+
+<ul class="list-group mt-3">
+        <li [routerLink]="['/headlines', c.code]" *ngFor="let c of countryList" class="list-group-item d-flex justify-content-between align-items-center">
+            {{c.name}}
+            <span><img src="{{c.flag}}" height="25"></span>
+          </li>
+  </ul>

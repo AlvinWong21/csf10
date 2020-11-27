@@ -1,0 +1,32 @@
+<div class="row justify-content-between mt-3">
+    <h2>Top Headlines in {{country}}</h2>
+    <button type="button" class="btn btn-info" [routerLink]="['/countries']">Back</button>
+</div>
+
+<div class="list-group mt-3">
+    <li class="list-group-item" *ngFor="let n of searchResults">
+        <div class="row">
+            <div class="col-4">
+                <img class="img-fluid" src="{{n.imageUrl}}" alt="Image Unavailable." height="200">
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <h5>{{n.title}}</h5>
+                    <code>by {{n.author}} || from {{n.sourceName}}</code>
+                    <br>
+                    <h6>{{n.description}}</h6>
+                    <p>{{n.content}}</p>
+                </div>
+                <div class="row justify-content-between">
+                    <span class="align-self-center">
+                        <code style="color: grey">{{n.datetime}}</code>
+                    </span>
+                    
+                    <a class="btn btn-primary" href="{{n.url}}">Link</a>
+                </div>
+               
+            </div>
+        </div>
+
+    </li>
+</div>
