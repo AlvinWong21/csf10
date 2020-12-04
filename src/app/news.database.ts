@@ -18,7 +18,7 @@ export class NewsDB extends Dexie {
             news: '++newsid,country'
         })
 
-        this.version(1).stores({
+        this.version(2).stores({
             apiKey: 'apiKey',
             countries: 'code',
             news: '++newsid,country,timestamp,save'
@@ -58,12 +58,12 @@ export class NewsDB extends Dexie {
     }
 
     async saveCountriesDB(countries: Countries[]): Promise<any> {
-        await this.countries.bulkAdd(countries)
+        await this.countries.bulkPut(countries)
         return console.log(countries)
     }
 
     async saveNewsDB(searchResults: News[]): Promise<any> {
-        await this.news.bulkAdd(searchResults)
+        await this.news.bulkPut(searchResults)
         return console.log(searchResults)
     }
 
@@ -76,9 +76,16 @@ export class NewsDB extends Dexie {
         return console.log(">>>Returning from NewsDB: ", targetNews)
     }
 
-    async getNews(code: string): Promise<any> {
-        const newsCount = await this.news.where('code').equals(code).toArray()
-        return console.log("Returning news", newsCount)
+    async getNews(country: string): Promise<any> {
+        const newsCount = await this.news.where('country').equals(country).toArray()
+        console.log("Returning news", newsCount)
+        return newsCount
+    }
+
+    async deleteNews(expiredNews): Promise<any> {
+        let a = expiredNews.map(x => x.newsid)
+        console.log(a)
+        return this.news.bulkDelete(expiredNews.map(x => x.newsid))
     }
 }
 

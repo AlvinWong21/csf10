@@ -19,6 +19,6 @@ export interface News {
     imageUrl: string,
     datetime: Date,
     content: string,
-    timestamp: Date
+    timestamp: number
 
 }
